@@ -1,8 +1,9 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ProductRowComponent from "./components/ProductRowComponent";
-import CartItemsComponent from "./components/CartItemsComponent";
+import ProductRowComponent from "../components/ProductRowComponent";
+import CartItemsComponent from "../components/CartItemsComponent";
+
 
 const Home = () => {
   return (
@@ -10,11 +11,11 @@ const Home = () => {
       <div style={{ marginTop: "20px", marginLeft: "20px",marginRight:"40px"}}>
         <Row>
           <Col xs={8}>
-            <ProductRowComponent />
+            <ProductRowComponent/>
           </Col>
 
           <Col xs={4}>
-            <CartItemsComponent />
+            <CartItemsComponent/>
           </Col>
         </Row>
       </div>
