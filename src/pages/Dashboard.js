@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 const Dashboard = () => {
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" position="sticky">
         <Container>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
