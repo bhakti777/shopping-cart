@@ -23,7 +23,7 @@ const ProductListComponent = () => {
 
   return (
     <>
-    <div className="sticky-div"> 
+    <div className="sticky-header"> 
       <Card className="productlist-wrapper">
         <Card.Header>Products</Card.Header>
       </Card>
