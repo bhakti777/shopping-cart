@@ -1,36 +1,33 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import RowComponent from "./RowComponent";
 
-const ProductListComponent = () => {
-  const [productData, setProductData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((json) => setProductData(json));
-  }, [productData]);
-
-  const [count, setCount] = useState(0);
-
-  const incrementCount = () => {
-    setCount((count) => count + 1);
-  };
-
-  const decrementCount = () => {
-    setCount((count) => count - 1);
-  };
+const ProductListComponent = ({productData,count, incrementCount, decrementCount,onAddItems}) => {
 
   return (
     <>
-    <div className="sticky-header"> 
-      <Card className="productlist-wrapper">
-        <Card.Header>Products</Card.Header>
-      </Card>
-    </div>
+      <div className="sticky-header">
+        <Card className="productlist-wrapper">
+          <Card.Header>Products</Card.Header>
+        </Card>
+      </div>
 
       <div className="div-grid">
-        <RowComponent productData={productData} count={count} incrementCount={incrementCount} decrementCount={decrementCount}/>
+        {productData &&
+          productData.map((product) => {
+            return (
+              <>
+                <RowComponent
+                  product={product}
+                  id={product.id}
+                  count={count}
+                  incrementCount={incrementCount}
+                  decrementCount={decrementCount}
+                  onAddItems={onAddItems}
+                />
+              </>
+            );
+          })}
       </div>
     </>
   );
