@@ -14,12 +14,15 @@ const Home = () => {
       .then((json) => setProductData(json));
   }, [productData]);
 
-  const onRemoveItem=(indexToDelete)=>{
-    const productDataClone=[...productData];
-    productDataClone.splice(indexToDelete,1);
-    setProductData(productDataClone);
+  const onRemoveItem=(event,indexToDelete)=>{
+    // const productDataClone=[...productData];
+    // productDataClone.splice(indexToDelete,1);
+    // setProductData(productDataClone);
+    event.preventDefault();
+    console.log("deleted=>",indexToDelete)
+
   }
-    console.log("deleted=>",productData)
+    // console.log("deleted=>",productData)
 
   const onAddItems = (item) => {
     cartItems.push(item)
@@ -42,7 +45,7 @@ const Home = () => {
             <CartItemsComponent
               cartItems={cartItems}
               productData={productData}
-              onAddItems={onAddItems}
+              // onAddItems={onAddItems}
             />
           </Col>
         </Row>

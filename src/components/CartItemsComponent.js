@@ -16,7 +16,7 @@ const CartItemsComponent = ({ cartItems }) => {
                 <h5>Cart Items:</h5>
                 <Row>
                   <div>
-                    {cartItems.length === 0 && <div>Cart is empty</div>}{" "}
+                    {cartItems.length === 0 && <div>Cart is empty</div>}
                   </div>
                 </Row>
               </ListGroup.Item>
@@ -43,7 +43,7 @@ const CartItemsComponent = ({ cartItems }) => {
 
                 <Row>
                   <Col xs={9}><b>Total Amount</b></Col>
-                  <Col xs={3}>${item.price + (-34)+20}</Col>
+                  <Col xs={3}>${item.price-6+3}</Col>
                 </Row>
                 
               </ListGroup.Item>

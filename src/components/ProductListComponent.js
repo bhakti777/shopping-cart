@@ -7,10 +7,10 @@ const ProductListComponent = ({productData,onAddItems,onRemoveItem}) => {
   const [count, setCount] = useState(0);
 
   const incrementCount = () => {
-    setCount((count) => count + 1);
+    setCount((count) => count<10 ? count+1:0);
   };
   const decrementCount = () => {
-    setCount((count) => count - 1);
+    setCount((count) => count>1 ? count-1:0);
   };
 
   return (
@@ -23,12 +23,11 @@ const ProductListComponent = ({productData,onAddItems,onRemoveItem}) => {
 
       <div className="div-grid">
         {productData &&
-          productData.map((product,index) => {
+          productData.map((product) => {
             return (
               <>
                 <RowComponent
                   product={product}
-                  // key={product.id}
                   count={count}
                   incrementCount={incrementCount}
                   decrementCount={decrementCount}

@@ -28,12 +28,12 @@ const RowComponent = ({ product,index,count, incrementCount, decrementCount,onAd
               <Row className="changeDivSize">
                 <Col xs={4}>$ {product.price}</Col>
                 <Col xs={5}>
-                  <Button onClick={()=>decrementCount(product)} size="sm" style={{ marginRight: "3px"}} > -</Button>
+                  <Button onClick={()=>decrementCount(product.id)} size="sm" style={{ marginRight: "3px"}} > -</Button>
                   <span>{count}</span>
-                  <Button onClick={()=>incrementCount(product)} size="sm" style={{ marginLeft: "3px" }} >+</Button>
+                  <Button onClick={()=>incrementCount(product.id)} size="sm" style={{ marginLeft: "3px" }} >+</Button>
                 </Col>
                 <Col xs={3}>
-                  <Button onClick={()=>onRemoveItem(product.id)}>Remove</Button>
+                  <Button onClick={(e)=>onRemoveItem(e,product.id)}>Remove</Button>
                 </Col>
               </Row>
             </Card.Text>
