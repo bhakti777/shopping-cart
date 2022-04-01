@@ -6,7 +6,6 @@ import CartItemsComponent from "../components/CartItemsComponent";
 
 const Home = () => {
   const [productData, setProductData] = useState([]);
-  const [count, setCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -15,30 +14,16 @@ const Home = () => {
       .then((json) => setProductData(json));
   }, [productData]);
 
-  const incrementCount = () => {
-    setCount((count) => count + 1);
-  };
-  const decrementCount = () => {
-    setCount((count) => count - 1);
-  };
+  const onRemoveItem=(indexToDelete)=>{
+    const productDataClone=[...productData];
+    productDataClone.splice(indexToDelete,1);
+    setProductData(productDataClone);
+  }
+    console.log("deleted=>",productData)
 
-  const onAddItems = (productData) => {
-    const selectedItems = cartItems.find((x) => x.id === productData.id);
-    if (selectedItems) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === productData.id ? { ...selectedItems } : x
-        )
-      );
-    }
-   else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === productData.id ? { ...selectedItems } : x
-        )
-      );
-    }
-    console.log(selectedItems);
+  const onAddItems = (item) => {
+    cartItems.push(item)
+    console.log(cartItems)
   };
 
   return (
@@ -48,10 +33,8 @@ const Home = () => {
           <Col xs={8}>
             <ProductListComponent
               productData={productData}
-              count={count}
-              incrementCount={incrementCount}
-              decrementCount={decrementCount}
               onAddItems={onAddItems}
+              onRemoveItem={onRemoveItem}
             />
           </Col>
 

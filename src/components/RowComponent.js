@@ -4,14 +4,13 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-const RowComponent = ({ product,id,count, incrementCount, decrementCount,onAddItems}) => {
+const RowComponent = ({ product,index,count, incrementCount, decrementCount,onAddItems,onRemoveItem}) => {
   
   return (
     <>
-      <div className="product-wrapper">
-        <Card key={id} className="product-card-wrapper">
+        <Card className="product-card-wrapper" key={index}>
           <div className="image-div">
-            <Card.Img src={product.image} maxWidth={"100%"} height={"200px"} />
+            <Card.Img src={product.image} width={"200px"} height={"200px"} />
           </div>
 
           <Card.Body>
@@ -26,26 +25,27 @@ const RowComponent = ({ product,id,count, incrementCount, decrementCount,onAddIt
                 <div className="descri-overflow">{product.description}</div>
               </Row>
 
-              <Row>
-                <Col xs={1}></Col>
+              <Row className="changeDivSize">
                 <Col xs={4}>$ {product.price}</Col>
-                <Col xs={7}>
-                  <Button onClick={decrementCount} size="sm" style={{ marginRight: "5px", marginLeft: "40px" }} > -</Button>
+                <Col xs={5}>
+                  <Button onClick={()=>decrementCount(product)} size="sm" style={{ marginRight: "3px"}} > -</Button>
                   <span>{count}</span>
-                  <Button onClick={incrementCount} size="sm" style={{ marginLeft: "5px" }} >+</Button>
+                  <Button onClick={()=>incrementCount(product)} size="sm" style={{ marginLeft: "3px" }} >+</Button>
+                </Col>
+                <Col xs={3}>
+                  <Button onClick={()=>onRemoveItem(product.id)}>Remove</Button>
                 </Col>
               </Row>
             </Card.Text>
 
             <Card.Footer>
-              <Button onClick={onAddItems} variant="success" style={{ width: "100%" }}>
+              <Button onClick={()=>onAddItems(product,product.id)} variant="success" style={{ width: "100%" }}>
                 Add to Cart
               </Button>
             </Card.Footer>
 
           </Card.Body>
         </Card>
-      </div>
     </>
   );
 };

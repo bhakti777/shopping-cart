@@ -1,8 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import Card from "react-bootstrap/Card";
 import RowComponent from "./RowComponent";
 
-const ProductListComponent = ({productData,count, incrementCount, decrementCount,onAddItems}) => {
+const ProductListComponent = ({productData,onAddItems,onRemoveItem}) => {
+
+  const [count, setCount] = useState(0);
+
+  const incrementCount = () => {
+    setCount((count) => count + 1);
+  };
+  const decrementCount = () => {
+    setCount((count) => count - 1);
+  };
 
   return (
     <>
@@ -14,16 +23,17 @@ const ProductListComponent = ({productData,count, incrementCount, decrementCount
 
       <div className="div-grid">
         {productData &&
-          productData.map((product) => {
+          productData.map((product,index) => {
             return (
               <>
                 <RowComponent
                   product={product}
-                  id={product.id}
+                  // key={product.id}
                   count={count}
                   incrementCount={incrementCount}
                   decrementCount={decrementCount}
                   onAddItems={onAddItems}
+                  onRemoveItem={onRemoveItem}
                 />
               </>
             );

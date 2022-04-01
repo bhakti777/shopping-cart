@@ -19,43 +19,37 @@ const CartItemsComponent = ({ cartItems }) => {
                     {cartItems.length === 0 && <div>Cart is empty</div>}{" "}
                   </div>
                 </Row>
-                <Row>
-                  {cartItems.map((item) => {
-                    return (
-                      <Row>
-                        <div key={item.id}>
-                          <Col>{item.name}</Col>
-                          <Col>{item.price}</Col>
-                        </div>
-                      </Row>
-                    );
-                  })}
-                </Row>
               </ListGroup.Item>
 
+              {cartItems.map((item) => {
+                    return (
+                 <>
               <ListGroup.Item>
                 <Row>
-                  <Col>Price ( 1 item)</Col>
-                  <Col>$ 234</Col>
+                  <Col xs={9}><b>{item.title}</b></Col>
+                  <Col xs={3}>$ {item.price}</Col>
                 </Row>
 
                 <Row>
-                  <Col>Discount</Col>
-                  <Col>- $ 34</Col>
+                  <Col xs={9}>Discount</Col>
+                  <Col xs={3}>- $6</Col>
                 </Row>
 
                 <Row>
-                  <Col>Delivery Charges</Col>
-                  <Col>+ $ 20</Col>
+                  <Col xs={9}>Delivery Charges</Col>
+                  <Col xs={3}>+ $3</Col>
                 </Row>
                 <hr />
 
                 <Row>
-                  <Col>Total Amount</Col>
-                  <Col>$ 220</Col>
+                  <Col xs={9}><b>Total Amount</b></Col>
+                  <Col xs={3}>${item.price + (-34)+20}</Col>
                 </Row>
+                
               </ListGroup.Item>
-
+              </>
+                 );
+                })}
               <ListGroup.Item>
                 <Row>
                   <Button className="checkout-btn-width">CheckOut</Button>

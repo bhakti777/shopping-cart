@@ -1,4 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -10,8 +11,8 @@ const Dashboard = () => {
         <Container>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#action1"> <Link to="/">Dashboard</Link> </Nav.Link>
-              <Nav.Link href="#action2"><Link to="/home">Home</Link></Nav.Link>
+              <Nav.Link href="/">Dashboard </Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
             </Nav>
 
             <Nav className="me-auto">
