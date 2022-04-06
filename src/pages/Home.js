@@ -7,27 +7,38 @@ import CartItemsComponent from "../components/CartItemsComponent";
 const Home = () => {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [counter, setCounter] = useState(0);
+
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((json) => setProductData(json));
-  }, [productData]);
+  }, []);
 
-  const onRemoveItem=(event,indexToDelete)=>{
-    // const productDataClone=[...productData];
-    // productDataClone.splice(indexToDelete,1);
-    // setProductData(productDataClone);
-    event.preventDefault();
-    console.log("deleted=>",indexToDelete)
 
-  }
-    // console.log("deleted=>",productData)
-
-  const onAddItems = (item) => {
-    cartItems.push(item)
-    console.log(cartItems)
+  
+  const onAddToCart = (item) => {
+    const cartitemsClone=[...cartItems]
+    cartitemsClone.push(item)
+    setCartItems(cartitemsClone)
   };
+  console.log(cartItems)
+
+
+  //delete item from cart
+  const onRemoveItem=(item)=>{
+    const cartClone=[...cartItems];
+    const indexToDelete=cartClone.findIndex((product)=> {
+      return product.id==item.id;
+    })
+    if(indexToDelete>-1){
+    cartClone.splice(indexToDelete,1)
+    setCartItems(cartClone)
+    }
+    console.log(indexToDelete)
+  }
+
 
   return (
     <>
@@ -36,7 +47,8 @@ const Home = () => {
           <Col xs={8}>
             <ProductListComponent
               productData={productData}
-              onAddItems={onAddItems}
+              onAddToCart={onAddToCart}
+              counter={counter}
               onRemoveItem={onRemoveItem}
             />
           </Col>
@@ -45,7 +57,7 @@ const Home = () => {
             <CartItemsComponent
               cartItems={cartItems}
               productData={productData}
-              // onAddItems={onAddItems}
+              counter={counter}
             />
           </Col>
         </Row>

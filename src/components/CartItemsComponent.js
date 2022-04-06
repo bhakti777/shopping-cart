@@ -6,9 +6,20 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 const CartItemsComponent = ({ cartItems }) => {
+
+  let cost = 0
+  cartItems.forEach((cartitem) => {
+      if (cartitem.counter) {
+          cost = cost + (cartitem.price * cartitem.counter)
+      } else {
+          cost = cost + cartitem.price
+      }
+
+  })
+
   return (
     <>
-      <div className="sticky-div">
+    <div className="sticky-div">
         <Row>
           <Card className="cart-card-wrapper">
             <ListGroup variant="flush">
@@ -21,35 +32,30 @@ const CartItemsComponent = ({ cartItems }) => {
                 </Row>
               </ListGroup.Item>
 
-              {cartItems.map((item) => {
-                    return (
-                 <>
               <ListGroup.Item>
                 <Row>
-                  <Col xs={9}><b>{item.title}</b></Col>
-                  <Col xs={3}>$ {item.price}</Col>
+                  <Col xs={9}><b>Price</b></Col>
+                  <Col xs={3}>$ {cost}</Col>
                 </Row>
 
                 <Row>
                   <Col xs={9}>Discount</Col>
-                  <Col xs={3}>- $6</Col>
+                  <Col xs={3}>- $0</Col>
                 </Row>
 
                 <Row>
                   <Col xs={9}>Delivery Charges</Col>
-                  <Col xs={3}>+ $3</Col>
+                  <Col xs={3}>+ $0</Col>
                 </Row>
                 <hr />
 
                 <Row>
                   <Col xs={9}><b>Total Amount</b></Col>
-                  <Col xs={3}>${item.price-6+3}</Col>
+                  <Col xs={3}> $ {cost}</Col>
                 </Row>
                 
               </ListGroup.Item>
-              </>
-                 );
-                })}
+              
               <ListGroup.Item>
                 <Row>
                   <Button className="checkout-btn-width">CheckOut</Button>
@@ -58,7 +64,7 @@ const CartItemsComponent = ({ cartItems }) => {
             </ListGroup>
           </Card>
         </Row>
-      </div>
+        </div>
     </>
   );
 };
