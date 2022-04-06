@@ -68,8 +68,7 @@ code {
   top: 0;
 }
 .cart-card-wrapper{
-  width: 50rem;
-  padding: 10px;
+  /* width: 50rem; */
   position: sticky;
 
 }

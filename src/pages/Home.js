@@ -7,7 +7,6 @@ import CartItemsComponent from "../components/CartItemsComponent";
 const Home = () => {
   const [productData, setProductData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [counter, setCounter] = useState(0);
 
 
   useEffect(() => {
@@ -27,12 +26,12 @@ const Home = () => {
 
 
   //delete item from cart
-  const onRemoveItem=(item)=>{
+  const onRemoveItem=(product)=>{
     const cartClone=[...cartItems];
-    const indexToDelete=cartClone.findIndex((product)=> {
-      return product.id==item.id;
-    })
-    if(indexToDelete>-1){
+    const indexToDelete=cartClone.findIndex((item)=> {
+      return item.id==product.id;
+    })                                                    //cart item id==productdata.id
+    if(indexToDelete>-1){                                
     cartClone.splice(indexToDelete,1)
     setCartItems(cartClone)
     }
@@ -43,7 +42,7 @@ const Home = () => {
   return (
     <>
       <div className="page-container">
-        <Row>
+        <Row >
           <Col xs={8}>
             <ProductListComponent
               productData={productData}

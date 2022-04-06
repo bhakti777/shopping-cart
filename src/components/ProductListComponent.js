@@ -3,26 +3,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup"
+import ListGroupItem  from  "react-bootstrap/ListGroupItem";
 // import RowComponent from "./RowComponent";
 
-const ProductListComponent = ({productData,onAddToCart,onRemoveItem,counter}) => {
+const ProductListComponent = ({productData,onAddToCart,onRemoveItem}) => {
 
-  const [count, setCount] = useState(0);
-
-  const incrementCount = () => {
-    setCount((count) => count<10 ? count+1:0);
-  };
-  const decrementCount = () => {
-    setCount((count) => count>1 ? count-1:0);
-  };
+  
 
   return (
     <>
-      <div className="sticky-header">
-        <Card className="productlist-wrapper">
+    <ListGroup className="productlist-wrapper">
+      <ListGroupItem>
+        <Card >
           <Card.Header>Products</Card.Header>
-        </Card>
-      </div>
+          </Card>
+      </ListGroupItem>
+
+      <ListGroupItem >
 
       <div className="div-grid">
         {productData &&
@@ -49,12 +47,10 @@ const ProductListComponent = ({productData,onAddToCart,onRemoveItem,counter}) =>
          
                        <Row className="changeDivSize">
                          <Col xs={4}>$ {product.price}</Col>
-                         <Col xs={5}>
-                           <Button onClick={()=>decrementCount(product.id)} size="sm" style={{ marginRight: "3px"}} > -</Button>
-                           <span>{count}</span>
-                           <Button onClick={()=>incrementCount(product.id)} size="sm" style={{ marginLeft: "3px" }} >+</Button>
+                         <Col xs={4}>
+                          
                          </Col>
-                         <Col xs={3}>
+                         <Col xs={4}>
                            <Button onClick={(e)=>onRemoveItem(product)}>Remove</Button>
                          </Col>
                        </Row>
@@ -73,6 +69,9 @@ const ProductListComponent = ({productData,onAddToCart,onRemoveItem,counter}) =>
             );
           })}
       </div>
+      </ListGroupItem>
+
+      </ListGroup>
     </>
   );
 };
