@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 const Dashboard = () => {
@@ -9,26 +11,32 @@ const Dashboard = () => {
     <>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="/images/fab.png"
+              width="60"
+              height="30"
+              className="d-inline-block align-top"
+            />{" "}
+            Fabulo Shopping Cart
+          </Navbar.Brand>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Dashboard </Nav.Link>
               <Nav.Link href="/home">Home</Nav.Link>
             </Nav>
 
-            <Nav className="me-auto">
-              <Navbar.Collapse className="justify-content-center">
-                <Navbar.Brand href="#home">
-                  <img
-                    alt=""
-                    src="/images/fab.png"
-                    width="60"
-                    height="30"
-                    className="d-inline-block align-top"
-                  />{" "}
-                  Fabulo Shopping Cart
-                </Navbar.Brand>
-              </Navbar.Collapse>
-            </Nav>
+            {/* <Nav>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form>
+            </Nav> */}
+
             <Nav>
               <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>

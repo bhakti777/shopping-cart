@@ -20,6 +20,7 @@ code {
 .productlist-wrapper{
   width: 47rem;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 .div-grid{
   display: grid;
